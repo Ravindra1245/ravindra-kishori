@@ -25,11 +25,11 @@ def basic():
         password = request.form['pass']
         try:
             auth.sign_in_with_email_and_password(email, password)
-            return render_template('new.html', s=successsful)
+            return render_template('login.html', s=successsful)
         except:
-            return render_template('new.html', us=unsuccessful)
+            return render_template('login.html', us=unsuccessful)
 
-    return render_template('new.html')    
+    return render_template('login.html')    
 
 if __name__ == '_main_':  
     app.run()
