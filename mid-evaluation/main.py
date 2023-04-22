@@ -41,6 +41,17 @@ def signup():
 def index():
     return render_template("index.html")
 
+
+#forgot password 
+@app.route("/forgot_password" , methods=['GET' , 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        auth.send_password_reset_email(email)
+        return render_template('login.html')
+    return render_template('forgot_password.html')
+    
+    
 #Welcome page
 @app.route("/welcome")
 def welcome():
