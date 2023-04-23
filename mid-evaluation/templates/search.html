@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Results</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'search.css') }}">
+</head>
+<body>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Details</th>
+				<th>Site</th>
+				<th>Price</th>
+				<th>Link</th>
+				<th>Image</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for item in result %}
+			<tr>
+				<td>{{ item[1] }}</td>
+				<td>{{ item[2] }}</td>
+				<td>{{ item[3] }}</td>
+				<td>{{item[4]}}</td>
+				<!-- <td>{{item[5]}}</td> -->
+				<td><img src="{{ item[5] }}" alt="Cannot load"></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

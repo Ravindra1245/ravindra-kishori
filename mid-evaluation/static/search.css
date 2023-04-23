@@ -1,0 +1,22 @@
+html {
+    background-color: rgba(52,53,65);
+    color: aliceblue;
+}
+
+img{
+  height: 100px;
+  width: 100px;
+}
+table {
+  border-collapse: collapse;
+  border: 2px solid black;
+  width: 100%;
+}
+
+th, td {
+  padding: 10px;
+}
+
+th {
+  background-color: #000000;
+}
