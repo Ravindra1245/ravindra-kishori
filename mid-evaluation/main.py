@@ -160,7 +160,7 @@ def execute_search(query):
         list.append([int(priceint/100) , info0.text, info1.text, info2.b.text, info3.href, info4['src']])
         #list.append([int(priceint/100) , 0, info1.text, info2.b.text, info3.href])
 
-    # list.sort(reverse=True)
+    list.sort(reverse=True)
     return list
 
 
