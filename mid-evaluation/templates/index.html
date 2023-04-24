@@ -3,6 +3,7 @@
 <head>
 	<title>My Website</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'index.css') }}">
+	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
 	<header>
@@ -12,10 +13,24 @@
 	
 	<div class="search-container">
 		<input type="text" id="search" placeholder="Search...">
+		<h2 id="text">Hello</h2>
 		<button type="submit" id="search-button">Search</button>
+		<div class="output">
+			<div class="amazon">
+				<h3>Amazon</h3>
+				<p id="amazon-price"></p>
+			</div>
+			<div class="flipkart">
+				<h3>Flipkart</h3>
+				<p id="flipkart-price"></p>
+			</div>
+		</div>
 	</div>
 
 	<!-- Rest of the page content goes here -->
+	<py-script>
+		pyscript.write("text", 3)
+	</py-script>
 	
 </body>
 </html>
