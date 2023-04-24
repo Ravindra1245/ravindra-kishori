@@ -1,0 +1,196 @@
+html {
+  background-color: rgb(0 0 0);
+  color: aliceblue;
+}
+
+img{
+height: 100px;
+width: 100px;
+}
+/* table {
+border-collapse: collapse;
+border: 2px solid black;
+width: 100%;
+}
+
+th, td {
+padding: 10px;
+}
+
+th {
+background-color: rgba(52,53,65);
+} */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 1.09em;
+  font-family:  sans-serif;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+  padding: 12px 15px;
+}
+
+th {
+  background-color: rgb(31 33 49);
+  color: rgb(112 112 112);
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(31 33 49);
+}
+
+tr:nth-child(odd) {
+  background-color: black;
+}
+
+td {
+  border-bottom: 1px solid #302e3e;
+}
+
+td:last-child {
+  border-right: 0;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr:nth-child(odd) {
+    background-color: #fff;
+    border: 0;
+  }
+
+  table td {
+    display: block;
+    text-align: right;
+    padding: 10px 15px;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+
+.filter-menu {background-color: rgb(0 0 0);padding: 20px;border-radius: 5px;float: left;}
+
+.filter-menu fieldset {
+border: none;
+margin: 0;
+padding: 0;
+}
+
+.filter-menu legend {font-weight: bold;font-size: 18px;margin-bottom: 10px;color: white;}
+
+.filter-menu label {
+display: inline-block;
+margin-right: 10px;
+margin-bottom: 5px;
+font-size: 16px;
+color: white;
+}
+
+.filter-menu input[type="checkbox"], 
+.filter-menu select {
+margin-bottom: 15px;
+}
+
+.filter-menu input[type="checkbox"] + label {
+position: relative;
+padding-left: 25px;
+cursor: pointer;
+font-size: 16px;
+color: white;
+}
+
+.filter-menu input[type="checkbox"] + label:before {
+content: "";
+display: inline-block;
+position: absolute;
+left: 0;
+top: 3px;
+width: 17px;
+height: 17px;
+border: 1px solid #ccc;
+border-radius: 3px;
+background-color: white;
+}
+
+.filter-menu input[type="checkbox"]:checked + label:before {
+content: "\2713";
+color: black;
+font-size: 14px;
+text-align: center;
+line-height: 17px;
+}
+
+.filter-menu select {
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 3px;
+background-color: white;
+color: black;
+}
+
+.filter-menu input[type="submit"] {
+background-color: rgba(16,163,127);
+color: white;
+padding: 8px 16px;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+}
+
+.filter-menu input[type="submit"]:hover {
+background-color: rgb(6, 104, 80);
+}
+
+.search-box {
+float: right;
+margin-top: 20px;
+}
+
+.search-box input[type="text"] {
+padding: 6px;
+border: 1px solid #ccc;
+border-radius: 3px;
+background-color: white;
+color: black;
+width:300px;
+  height:25px;
+}
+
+.search-box button[type="submit"] {
+padding: 6px 10px;
+background-color: rgba(16,163,127);
+color: white;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+width:70px;
+height: 30px;
+  
+}
+
+.search-box button[type="submit"]:hover {
+background-color: rgb(6, 104, 80);
+}
