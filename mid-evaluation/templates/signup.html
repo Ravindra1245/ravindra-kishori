@@ -20,11 +20,30 @@
     <form action="http://127.0.0.1:5000/register" method="POST">
       <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
       <input type="email" id="login" class="fadeIn second" name="email" placeholder="email">
-      <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
+      <span id="re">True</span>
+      <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8" onkeydown="test_str()">
+      <!-- <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8"> -->
       <input type="submit" class="fadeIn fourth" value="Sign Up">
     </form>
 
   </div>
 </div>
 </body>
+<script type="text/javascript">
+  function test_str() {
+      // var res=document.getElementById("re").value;
+      console.log("chalu")
+      var str = document.getElementById("password").value;
+      // if (str.match(/[a-z]/g) && str.match(
+      //         /[A-Z]/g) && str.match(
+      //         /[0-9]/g) && str.match(
+      //         /[^a-zA-Z\d]/g) && str.length >= 8)
+      if((str.match(/[A-Z]/)) && str.length >=8 && str.length <=15 && str.match(/[a-z]/) && str.match(/[0-9]/)){
+        console.log("true")
+      }
+      else
+      console.log("False")
+
+  }
+</script>
 </html>
