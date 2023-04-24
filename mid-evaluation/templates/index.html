@@ -3,7 +3,6 @@
 <head>
 	<title>My Website</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'index.css') }}">
-	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
 	<header>
@@ -12,13 +11,12 @@
 	</header>
 	
 	<div class="search-container">
+		
 		<form method="POST" action="{{ url_for('search') }}">
 			<input type="text" id="search" placeholder="Search..." name="search_box">
 			<button type="submit" id="search-button">Search</button>
 		</form>
 	</div>
-
-	<!-- Rest of the page content goes here -->
 	
 </body>
 </html>

@@ -10,7 +10,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color:rgb(29 29 29);
+    background-color: rgb(29 29 29);
     color: white;
 }
 
@@ -20,8 +20,9 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 50px); /* adjust this value to position the search bar at the desired height */
-    background-color: rgba(52,53,65);
+    height: calc(100vh - 50px);
+    /* adjust this value to position the search bar at the desired height */
+    background-color: rgba(52, 53, 65);
 }
 
 /* Styles for the search bar */
@@ -37,18 +38,20 @@ header {
 
 /* Styles for the search button */
 #search-button {
-    background-color: rgba(16,163,127);
+    background-color: rgba(16, 163, 127);
     color: white;
     padding: 15px;
     border: none;
     border-radius: 5px;
     font-size: 24px;
     cursor: pointer;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 10px rgba(0, 61, 42, 0.2);
 }
+
 button:hover {
     color: rgb(6, 104, 80);
 }
+
 /* Styles for the logout button */
 #logout {
     background-color: white;
@@ -63,9 +66,48 @@ button:hover {
     top: 10px;
     right: 10px;
 }
-#logout:hover{
+
+#logout:hover {
     background-color: #e3e3e3;
 }
+
 a {
     text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+#logout {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-left: auto;
+}
+
+#logout:hover {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
 }
