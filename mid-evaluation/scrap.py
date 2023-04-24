@@ -12,44 +12,46 @@ res = requests.get(f'https://www.google.com/search?q={name1}&tbm=shop&sxsrf=GENE
 
 soup = BeautifulSoup(res.text,'html.parser')
 
-parent_div = soup.find('div', class_='GhTN2e')
+# print(soup)
 
-details = parent_div.find_all('h3', class_='sh-np__product-title translate-content')
-prices = parent_div.find_all('div', class_='KZmu8e')
-sites = parent_div.find_all('span', class_='E5ocAb')
-links = parent_div.find_all('a', class_='sh-np__click-target')
+parent_div = soup.find_all('div', class_='mR2gOd')
+print(parent_div)
+# details = parent_div.find_all('h3', class_='sh-np__product-title translate-content')
+# prices = parent_div.find_all('div', class_='KZmu8e')
+# sites = parent_div.find_all('span', class_='E5ocAb')
+# links = parent_div.find_all('a', class_='sh-np__click-target')
 
-list = []
+# list = []
 
-# for info1 in spans:
-#     list.append([info1.text])
+# # for info1 in spans:
+# #     list.append([info1.text])
 
-# for i in range(len(list)):
-#     list[i].append
+# # for i in range(len(list)):
+# #     list[i].append
 
-def price_to_int(price_str):
-    # Remove the ₹ currency symbol and decimal point
-    price_str = price_str.replace('₹', '').replace('.', '').replace(',','')
+# def price_to_int(price_str):
+#     # Remove the ₹ currency symbol and decimal point
+#     price_str = price_str.replace('₹', '').replace('.', '').replace(',','')
     
-    # Convert the price string to an integer
-    price_int = int(price_str)
+#     # Convert the price string to an integer
+#     price_int = int(price_str)
     
-    return price_int
+#     return price_int
 
 
-for [info0, info1, info2, info3] in zip(details, sites , prices, links):
-    priceint = price_to_int(info2.b.text)
-    list.append([int(priceint/100) , info0.text, info1.text, info2.b.text, info3.href])
-    # list.append([int(priceint/100) , 0, info1.text, 0, info3.href])
+# for [info0, info1, info2, info3] in zip(details, sites , prices, links):
+#     priceint = price_to_int(info2.b.text)
+#     list.append([int(priceint/100) , info0.text, info1.text, info2.b.text, info3.href])
+#     # list.append([int(priceint/100) , 0, info1.text, 0, info3.href])
 
-list.sort(reverse=False)
+# list.sort(reverse=False)
 
-# print(list)
+# # print(list)
 
-# for info2 in divs:
+# # for info2 in divs:
 
 
-for i in list:
-    print(i)
+# for i in list:
+#     print(i)
 
 
