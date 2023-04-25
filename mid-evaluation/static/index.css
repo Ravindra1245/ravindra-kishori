@@ -25,7 +25,7 @@ form {
     /* optional: add a maximum width to the form container */
 }
 .navbar {
-    overflow: hidden;
+   
     background-color:rgb(0, 0, 0 , 1);
     position: fixed;
     top: 0;
@@ -33,9 +33,24 @@ form {
     z-index: 100;
   }
 .pro{
-    overflow: hidden;
-    position: fixed;
+    position: relative;
     z-index: 999;
+}
+
+.tmpp{
+    
+    padding: 8px;;
+    background-color: rgba(16, 163, 127);
+    border-color: #222;
+}
+.hovc{
+    color: black;
+   
+}
+.hovc:hover{
+    border-radius: 5%;
+    color: #fff;
+    background-color: rgb(9, 9, 9);
 }
 input[type="text"],
 button[type="submit"] {
@@ -210,7 +225,7 @@ section {
 
 /* footer */
 .footer-distributed {
-    background: #666;
+    background: #2f2f2f;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
     width: 100%;
@@ -241,7 +256,7 @@ section {
 }
 
 .footer-distributed h3 span {
-    color: lightseagreen;
+    color:  rgba(16, 163, 127);
 }
 
 /* Footer links */
@@ -261,7 +276,7 @@ section {
 }
 
 .footer-distributed .footer-company-name {
-    color: #222;
+    color: #ffffff;
     font-size: 14px;
     margin-top: 60px;
     font-weight: normal;
@@ -308,7 +323,7 @@ section {
 }
 
 .footer-distributed .footer-center p a {
-    color: lightseagreen;
+    color:  rgba(16, 163, 127);
     text-decoration: none;
     ;
 }
@@ -335,7 +350,7 @@ section {
 
 .footer-distributed .footer-company-about {
     line-height: 20px;
-    color: #92999f;
+    color: #ffffff;
     font-size: 13px;
     font-weight: normal;
     margin: 0;
@@ -369,6 +384,7 @@ section {
     margin-right: 3px;
     margin-bottom: 5px;
 }
+
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
