@@ -69,7 +69,7 @@
 				<td>{{ item[1] }}</td>
 				<td>{{ item[2] }}</td>
 				<td>{{ item[3] }}</td>
-				<td>{{item[4]}}</td>
+				<td><a href="{{item[4]}}"><button class="store">Visit</button></a></td>
 				<!-- <td>{{item[5]}}</td> -->
 				<td><img src="{{ item[5] }}" alt="Cannot load"></td>
 			</tr>
@@ -79,7 +79,7 @@
 		{% endfor %}
 		</tbody>
 	</table>
-	<script>
+	<!-- <script>
 		const form = document.querySelector('form');
 		const input = document.querySelector('input');
 		const resultsDiv = document.querySelector('#search-results');
@@ -90,6 +90,6 @@
 			// Perform search and update search results in the "resultsDiv"
 			resultsDiv.innerHTML = `Search results for '${query}'`;
 		});
-	</script>
+	</script> -->
 </body>
 </html>

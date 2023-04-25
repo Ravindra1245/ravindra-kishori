@@ -4,9 +4,27 @@ html {
 }
 
 img{
-height: 100px;
-width: 100px;
+  height: 160px;
+  width: 150px;
+  border-radius: 8px
 }
+
+.store{
+  padding: 6px 10px;
+  background-color: rgba(16,163,127);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width:70px;
+  height: 30px;
+}
+
+.store:hover{
+  background-color: rgb(6, 104, 80);
+}
+
+
 /* table {
 border-collapse: collapse;
 border: 2px solid black;

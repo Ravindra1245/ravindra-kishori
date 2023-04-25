@@ -2,8 +2,10 @@ import pyrebase
 from flask import *
 import requests
 from bs4 import BeautifulSoup
-headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'}
+import random
 
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'}
+global list
 app = Flask(__name__)       #Initialze flask constructor
 
 #Add your own details
@@ -136,12 +138,24 @@ def search():
     return render_template('search.html', result=result)
 
 def execute_search(query, filter):
-    print(query)
-    print(filter)
-    list = []
-    my_dict = {}
+    
     name=query
     name1 = name.replace(" ","+")
+
+    rep_img=[]
+    list = []
+    my_dict = {}
+    link = {}
+
+    link["Amazon.in"] = "https://www.amazon.in"
+    link["Croma"] = "https://www.croma.com"
+    link["Vijay Sales"] = "https://www.vijaysales.com/"
+    link["Unicorn Store"] = "https://shop.unicornstore.in/"
+    link["Apple"]="https://www.apple.com/in/"
+    link["bigbasket.com"]="https://www.bigbasket.com"
+    link["Gadgets Now"]="https://shop.gadgetsnow.com/"
+    link["Ovantica.com"]="https://ovantica.com/"
+    
     google=f'https://www.google.com/search?q={name1}&tbm=shop&sxsrf=GENERATED_STRING&psb=1&ei=GENERATED_STRING&ved=GENERATED_STRING&uact=5&oq={name1}&gs_lcp=Cgtwcm9kdWN0cy1jYxADMg0IABCKBRCxAxCDARBDMg0IABCKBRCxAxCDARBDMg0IABCKBRCxAxCDARBDMg0IABCKBRCxAxCDARBDMgcIABCKBRBDMgsIABCABBCxAxCDATILCAAQgAQQsQMQgwEyCwgAEIAEELEDEIMBMgQIABADMgsIABCABBCxAxCDAToFCAAQgARQAFjqBmDHB2gAcAB4AIAB0wGIAdgCkgEFMC4xLjGYAQCgAQHAAQE&sclient=products-cc'
     res = requests.get(f'https://www.google.com/search?q={name1}&tbm=shop&sxsrf=GENERATED_STRING&psb=1&ei=GENERATED_STRING&ved=GENERATED_STRING&uact=5&oq={name1}&gs_lcp=Cgtwcm9kdWN0cy1jYxADMg0IABCKBRCxAxCDARBDMg0IABCKBRCxAxCDARBDMg0IABCKBRCxAxCDARBDMg0IABCKBRCxAxCDARBDMgcIABCKBRBDMgsIABCABBCxAxCDATILCAAQgAQQsQMQgwEyCwgAEIAEELEDEIMBMgQIABADMgsIABCABBCxAxCDAToFCAAQgARQAFjqBmDHB2gAcAB4AIAB0wGIAdgCkgEFMC4xLjGYAQCgAQHAAQE&sclient=products-cc',headers=headers)
     soup = BeautifulSoup(res.text,'html.parser')
@@ -169,16 +183,29 @@ def execute_search(query, filter):
         except:
             priceint = 0
         try:
-            my_dict[str(info1.text)].append([int(priceint/100) , info0.text, info1.text, info2.b.text, info3.href, info4['src']])
+            img = str(info4['src'])
+            if(img=="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="):
+                n=len(rep_img)
+                random_int = random.randint(0, n-1)
+                img = rep_img[random_int]                
+            else:
+                rep_img.append(img)
+            site = info1.text
+            url="Hello"
+            if link[site]:
+                url = link[site]
+            else:
+                url = info3['href']
+            # my_dict[str(info1.text)].append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
         except:
             x=0
-        list.append([int(priceint/100) , info0.text, info1.text, info2.b.text, info3.href, info4['src']])
+        print(url)
+        list.append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
         
     if filter!="":
         return my_dict[filter]
 
     return list
-
 
 
 if __name__ == "__main__":
