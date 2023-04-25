@@ -131,7 +131,7 @@ def register():
             return redirect(url_for('register'))
 
 
-@app.route('/search', methods=['POST'])
+@app.route('/search', methods=["POST"])
 def search():
     query = request.form['search_box']
     
