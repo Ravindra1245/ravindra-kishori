@@ -17,6 +17,7 @@ config = {
 
     "apiKey": "AIzaSyAHNUwFLMVv91t3ntaXYTCglULRlIg0oJw",
     "authDomain": "pricecompareg28.firebaseapp.com",
+    "databaseURL": "https://pricecompareg28-default-rtdb.firebaseio.com/" ,
     "projectId": "pricecompareg28",
     "storageBucket": "pricecompareg28.appspot.com",
     "messagingSenderId": "30273225015",
@@ -29,7 +30,6 @@ config = {
     # "storageBucket": "price-4e6c7.appspot.com",
     # "messagingSenderId": "362588580889",
     # "appId": "1:362588580889:web:9e95b78edbf75eb067ce88",
-    "databaseURL":""
 }
 
 #initialize firebase
@@ -39,7 +39,7 @@ db = firebase.database()
 
 #Initialze person as dictionary
 person = {"is_logged_in": False, "name": "", "email": "", "uid": ""}
-
+ekey ="" #key to store in database
 
 @app.route("/")
 def intro():
@@ -59,6 +59,17 @@ def signup():
 def index():
     return render_template("index.html")
 
+@app.route("/search_history" , methods=['GET'])
+def search_history():
+    his = db.child(ekey).get().val()
+    if his is None :
+        return render_template("no_search_history.html")
+    else:
+        history_names=[]
+        his = list(his.values())
+        for i in his:
+            history_names.append(i['History'])
+        return render_template("search_history.html" , history_names=history_names)
 
 #forgot password 
 @app.route("/forgot_password" , methods=["POST", "GET"])
@@ -89,6 +100,8 @@ def result():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['pass']
+        global ekey
+        ekey = email[:email.index("@")]
         try:
             auth.sign_in_with_email_and_password(email, password)
             return render_template('index.html', s=successsful)
@@ -104,6 +117,7 @@ def register():
         email = result["email"]
         password = result["pass"]
         name = result["name"]
+        ekey = email[:email.index("@")]
         try:
             #Try creating the user account using the provided data
             auth.create_user_with_email_and_password(email, password)
@@ -134,7 +148,8 @@ def register():
 @app.route('/search', methods=["POST"])
 def search():
     query = request.form['search_box']
-    
+    data = {'History' : query}
+    db.child(ekey).push(data)
     result = execute_search(query)
     return render_template('search.html', result=result)
 
