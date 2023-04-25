@@ -5,44 +5,32 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'search.css') }}">
 </head>
 <body>
-	
+	{ % if us % }
+		<p>{{us}}</p>
+	{ % endif % }
 	<header>
 		<nav>
 			<div class="filter-menu">
-				<form>
+				<form action="{{ url_for('sorted') }}" method="post">
 					<div class="search-box">
-						<form action="{{ url_for('search') }}" method="post">
-							<label for="company">Company:</label>
-							<input type="text" id="search" placeholder="Filter..." name="Filter-box">
-							<button type="submit">Apply<i class="fa fa-search"></i></button>
-						</form>
-					</div>
-					<fieldset>
-						<!-- <legend>Filter Options</legend>
 						<label for="company">Company:</label>
-						<input type="checkbox" id="amazon" name="company" value="Amazon">
-						<label for="amazon">Amazon</label>
-						<input type="checkbox" id="flipkart" name="company" value="Flipkart">
-						<label for="flipkart">Flipkart</label>
-						<input type="checkbox" id="croma" name="company" value="Croma">
-						<label for="croma">Croma</label>
-						<input type="checkbox" id="reliance" name="company" value="Reliance Jio">
-						<label for="reliance">Reliance Jio</label>
-						<input type="checkbox" id="vijay" name="company" value="Vijay Sales">
-						<label for="vijay">Vijay Sales</label>
-						<input type="checkbox" id="snapdeal" name="company" value="Snapdeal">
-						<label for="snapdeal">Snapdeal</label>
-						<input type="checkbox" id="tatacliq" name="company" value="Tata Cliq">
-						<label for="tatacliq">Tata Cliq</label>-->
-						<br>
-						<label for="price">Price:</label>
-						<select id="price" name="price">
-							<option value="asc">Ascending</option>
-							<option value="desc">Descending</option>
-						</select>
-						<br>
-						<input type="submit" value="Apply Filter">
-					</fieldset>
+						<input type="text" id="search" placeholder="Filter..." name="Filter-box">
+					</div>											
+					<br>
+					<label for="prices">Price:</label>
+					<select id="price" name="price">
+						<option value="none">Not Selected</option>
+						<option value="asc">Ascending</option>
+						<option value="desc">Descending</option>
+					</select>
+					<br>
+					<button type="submit">Apply</button>					
+				</form>	
+				<form action="{{ url_for('compare') }}" method="post">
+					<input type="text" id="store1" name="store1" placeholder="Store 1" class="search-box">
+					<input type="text" id="store2" name="store2" placeholder="Store 2" class="search-box">
+					<br><br>
+					<button type="submit" class="compare-btn">Compare</button>
 				</form>
 			</div>
 			<div class="search-box">
@@ -77,7 +65,7 @@
 				<td colspan="20"><hr></td>
 			</tr> -->
 		{% endfor %}
-		</tbody>
+	</tbody>
 	</table>
 	<!-- <script>
 		const form = document.querySelector('form');

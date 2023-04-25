@@ -3,9 +3,13 @@ from flask import *
 import requests
 from bs4 import BeautifulSoup
 import random
+from collections import *
 
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'}
-global list
+
+global lists
+global my_dict
+
 app = Flask(__name__)       #Initialze flask constructor
 
 #Add your own details
@@ -130,21 +134,21 @@ def register():
 @app.route('/search', methods=['POST'])
 def search():
     query = request.form['search_box']
-    try:
-        filter = request.form['Filter-box']
-    except:
-        filter=""
-    result = execute_search(query, filter)
+    
+    result = execute_search(query)
     return render_template('search.html', result=result)
 
-def execute_search(query, filter):
-    
+def execute_search(query):
+    global lists
+    global my_dict
     name=query
     name1 = name.replace(" ","+")
 
+    
+    lists = []
+    my_dict = defaultdict(list)
+
     rep_img=[]
-    list = []
-    my_dict = {}
     link = {}
 
     link["Amazon.in"] = "https://www.amazon.in"
@@ -167,8 +171,8 @@ def execute_search(query, filter):
         links = parent_div.find_all('a', class_='sh-np__click-target')
         images = parent_div.find_all('img')
     except:
-        list.append(['-', '-','Sorry the server not found','-','-'])
-        return list
+        lists.append(['-', '-','Sorry the server not found','-','-'])
+        return lists
     
  
     def price_to_int(price_str):
@@ -196,17 +200,60 @@ def execute_search(query, filter):
                 url = link[site]
             else:
                 url = info3['href']
-            # my_dict[str(info1.text)].append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
         except:
             x=0
-        print(url)
-        list.append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
+        my_dict[site].append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
+        lists.append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
         
-    if filter!="":
-        return my_dict[filter]
+    # lists.sort()
+    return lists
 
-    return list
+@app.route('/sorted', methods=['POST'])
+def sorted():
+    global lists
+    global my_dict
+    sorttype = request.form['price'] 
+    company = request.form['Filter-box']
+
+    print(sorttype) 
+    print(company)
+    st=[]
+
+    if company!="":
+        st=my_dict[company]
+    else:
+        st = lists
+
+    if sorttype=="asc":
+        st.sort()
+    elif sorttype=="desc": 
+        st.sort(reverse=True)
+    return render_template('search.html', result=st)
+
+@app.route('/compare', methods=['POST'])
+def compare():
+    global my_dict
+
+    store1 = request.form['store1']
+    store2 = request.form['store2']
+
+    if store1=="" or store2=="":
+        return render_template('search.html', us="Please Enter both stores") 
+
+    
+    list1 = my_dict[store1]
+    list2 = my_dict[store2]
+    list1.sort()
+    list2.sort()
+    Compresult = [] 
+    Compresult.append(list1[0])
+    Compresult.append(list2[0])
+    return render_template('compare.html', result=Compresult)
+
 
 
 if __name__ == "__main__":
     app.run()   
+
+
+    
