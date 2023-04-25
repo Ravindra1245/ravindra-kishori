@@ -14,7 +14,9 @@ form {
     display: flex;
     justify-content: center;
 }
-
+.searchbut:hover{
+    background-color: rgb(18, 78, 63);
+}
 .form-center {
     margin: 4% 0% 10%;
     display: flex;

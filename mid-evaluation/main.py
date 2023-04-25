@@ -208,7 +208,7 @@ def execute_search(query):
     # lists.sort()
     return lists
 
-@app.route('/sorted', methods=['POST'])
+@app.route('/sorted', methods=["POST"])
 def sorted():
     global lists
     global my_dict
@@ -230,7 +230,7 @@ def sorted():
         st.sort(reverse=True)
     return render_template('search.html', result=st)
 
-@app.route('/compare', methods=['POST'])
+@app.route('/compare', methods=["POST"])
 def compare():
     global my_dict
 
@@ -239,7 +239,6 @@ def compare():
 
     if store1=="" or store2=="":
         return render_template('search.html', us="Please Enter both stores") 
-
     
     list1 = my_dict[store1]
     list2 = my_dict[store2]
