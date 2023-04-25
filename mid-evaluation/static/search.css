@@ -109,13 +109,9 @@ td:last-child {
 }
 
 
-.filter-menu {background-color: rgb(0 0 0);padding: 20px;border-radius: 5px;float: left;}
+.filter-menu {margin-top: 10vh;background-color: rgb(0 0 0);padding: 20px;border-radius: 5px;float: left;}
 
-.filter-menu fieldset {
-border: none;
-margin: 0;
-padding: 0;
-}
+.filter-menu fieldset {border: none;margin-top: 5vh;padding: 0;}
 
 .filter-menu legend {font-weight: bold;font-size: 18px;margin-bottom: 10px;color: white;}
 
@@ -185,6 +181,7 @@ background-color: rgb(6, 104, 80);
 .search-box {
 float: right;
 margin-top: 20px;
+margin-right:60vh;
 }
 
 .search-box input[type="text"] {
@@ -193,8 +190,9 @@ border: 1px solid #ccc;
 border-radius: 3px;
 background-color: white;
 color: black;
-width:300px;
+width:400px;
   height:25px;
+  
 }
 
 .search-box button[type="submit"] {
@@ -212,6 +210,70 @@ height: 30px;
 .search-box button[type="submit"]:hover {
 background-color: rgb(6, 104, 80);
 }
+
+
+.search-box1 {
+  float: right;
+  margin-top: 20px;
+  }
+  
+  .search-box1 input[type="text"] {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: white;
+  color: black;
+  width:300px;
+    height:25px;
+  }
+  
+  .search-box1 button[type="submit"] {
+  padding: 6px 10px;
+  background-color: rgba(16,163,127);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width:70px;
+  height: 30px;
+    
+  }
+  
+  .search-box1 button[type="submit"]:hover {
+  background-color: rgb(6, 104, 80);
+  }
+
+  
+.search-box2 {
+  float: right;
+  margin-top: 20px;
+  }
+  
+  .search-box2 input[type="text"] {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: white;
+  color: black;
+  width:300px;
+    height:25px;
+  }
+  
+  .search-box2 button[type="submit"] {
+  padding: 6px 10px;
+  background-color: rgba(16,163,127);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width:70px;
+  height: 30px;
+    
+  }
+  
+  .search-box2 button[type="submit"]:hover {
+  background-color: rgb(6, 104, 80);
+  }
 
 .compare-btn {
   background-color: #4CAF50;

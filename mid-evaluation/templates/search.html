@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Search Results</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'search.css') }}">
 </head>
+
 <body>
-	{ % if us % }
-		<p>{{us}}</p>
-	{ % endif % }
 	<header>
 		<nav>
 			<div class="filter-menu">
 				<form action="{{ url_for('sorted') }}" method="post">
-					<div class="search-box">
-						<label for="company">Company:</label>
-						<input type="text" id="search" placeholder="Filter..." name="Filter-box">
-					</div>											
-					<br>
-					<label for="prices">Price:</label>
-					<select id="price" name="price">
-						<option value="none">Not Selected</option>
-						<option value="asc">Ascending</option>
-						<option value="desc">Descending</option>
-					</select>
-					<br>
-					<button type="submit">Apply</button>					
-				</form>	
-				<form action="{{ url_for('compare') }}" method="post">
-					<input type="text" id="store1" name="store1" placeholder="Store 1" class="search-box">
-					<input type="text" id="store2" name="store2" placeholder="Store 2" class="search-box">
-					<br><br>
-					<button type="submit" class="compare-btn">Compare</button>
+					<fieldset>
+						<div class="search-box1">
+							
+							<input type="text" id="search" placeholder="Filter by store" name="Filter-box">
+							<br>
+							<br>
+							<select id="price" name="price">
+								<option value="asc">Sort by Price</option>
+								<option value="asc">Ascending</option>
+								<option value="desc">Descending</option>
+							</select>
+							<br>
+							<button type="submit">Apply<i class="fa fa-search"></i></button>
+							
+						</div>
+						
+						<!-- <button type="submit" class="search-box">Apply<i class="fa fa-search"></i></button> -->
+					</fieldset>
 				</form>
 			</div>
 			<div class="search-box">
 				<form action="{{ url_for('search') }}" method="post">
 					<input type="text" id="search" placeholder="Search..." name="search_box">
 					<button type="submit">Search<i class="fa fa-search"></i></button>
+				</form>
+			</div>
+			<div class="search-box2">
+				<form action="{{ url_for('compare') }}" method="post">
+					<input type="text" id="search" placeholder="store1" name="store1">
+					<input type="text" id="search" placeholder="store2" name="store2">
+					<button type="submit">Compare<i class="fa fa-search"></i></button>
 				</form>
 			</div>
 		</nav>
@@ -52,7 +57,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		{% for item in result %}
+			{% for item in result %}
 			<tr>
 				<td>{{ item[1] }}</td>
 				<td>{{ item[2] }}</td>
@@ -64,8 +69,8 @@
 			<!-- <tr>
 				<td colspan="20"><hr></td>
 			</tr> -->
-		{% endfor %}
-	</tbody>
+			{% endfor %}
+		</tbody>
 	</table>
 	<!-- <script>
 		const form = document.querySelector('form');
@@ -80,4 +85,5 @@
 		});
 	</script> -->
 </body>
+
 </html>
