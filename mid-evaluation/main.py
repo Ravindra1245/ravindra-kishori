@@ -61,9 +61,9 @@ def index():
 
 
 #forgot password 
-@app.route("/forgot_password" , methods=['GET' , 'POST'])
+@app.route("/forgot_password" , methods=["POST", "GET"])
 def forgot_password():
-    if request.method == 'POST':
+    if request.method == "POST":
         email = request.form['email']
         auth.send_password_reset_email(email)
         return render_template('login.html')
@@ -82,7 +82,7 @@ def welcome():
         return redirect(url_for('login'))
 
 #If someone clicks on login, they are redirected to /result
-@app.route("/result", methods = ["POST", "GET"])
+@app.route("/result", methods = ["POST"])
 def result():
     unsuccessful = 'Please check your credentials'
     successsful = 'Login successful'
@@ -97,7 +97,7 @@ def result():
     return render_template('login.html') 
 
 #If someone clicks on register, they are redirected to /register
-@app.route("/register", methods = ["POST", "GET"])
+@app.route("/register", methods = ["POST"])
 def register():
     if request.method == "POST":        #Only listen to POST
         result = request.form           #Get the data submitted
@@ -233,12 +233,15 @@ def sorted():
 @app.route('/compare', methods=["POST"])
 def compare():
     global my_dict
-
-    store1 = request.form['store1']
-    store2 = request.form['store2']
-
+    unsuc="Please Enter Valid Stores"
+    try:
+        store1 = request.form['store1']
+        store2 = request.form['store2']
+    except:
+        return render_template('search.html', us=unsuc)
+    
     if store1=="" or store2=="":
-        return render_template('search.html', us="Please Enter both stores") 
+        return render_template('search.html', us=unsuc) 
     
     list1 = my_dict[store1]
     list2 = my_dict[store2]
@@ -247,7 +250,7 @@ def compare():
     Compresult = [] 
     Compresult.append(list1[0])
     Compresult.append(list2[0])
-    return render_template('compare.html', result=Compresult)
+    return render_template('search.html', result=Compresult)
 
 
 

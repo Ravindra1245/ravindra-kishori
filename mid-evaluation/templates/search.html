@@ -7,10 +7,15 @@
 </head>
 
 <body>
+	{% if us %}
+			<div>
+				<h2>{{us}}</h2>
+			</div>
+	{% endif %}
 	<header>
 		<nav>
 			<div class="filter-menu">
-				<form action="{{ url_for('sorted') }}" method="post">
+				<form action="{{ url_for('sorted') }}" method="post" id="form1">
 					<fieldset>
 						<div class="search-box1">
 							
@@ -18,7 +23,7 @@
 							<br>
 							<br>
 							<select id="price" name="price">
-								<option value="asc">Sort by Price</option>
+								<option value="none">Sort by Price</option>
 								<option value="asc">Ascending</option>
 								<option value="desc">Descending</option>
 							</select>
@@ -32,15 +37,15 @@
 				</form>
 			</div>
 			<div class="search-box">
-				<form action="{{ url_for('search') }}" method="post">
-					<input type="text" id="search" placeholder="Search..." name="search_box">
+				<form action="{{ url_for('search') }}" method="post" id="form2">
+					<input type="text" id="product_alert1" placeholder="Search..." name="search_box">
 					<button type="submit">Search<i class="fa fa-search"></i></button>
 				</form>
 			</div>
 			<div class="search-box2">
-				<form action="{{ url_for('compare') }}" method="post">
-					<input type="text" id="search" placeholder="store1" name="store1">
-					<input type="text" id="search" placeholder="store2" name="store2">
+				<form action="{{ url_for('compare') }}" method="post" id="form3">
+					<input type="text" id="compare1" placeholder="store1" name="store1">
+					<input type="text" id="compare2" placeholder="store2" name="store2">
 					<button type="submit">Compare<i class="fa fa-search"></i></button>
 				</form>
 			</div>
@@ -84,6 +89,8 @@
 			resultsDiv.innerHTML = `Search results for '${query}'`;
 		});
 	</script> -->
+	<script src="../static/search-alert1.js"></script>
+	<script src="../static/search-alert2.js"></script>
 </body>
 
 </html>
