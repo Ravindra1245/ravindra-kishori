@@ -162,7 +162,7 @@ def search():
     # Pass the string in search
     # method of regex object.   
     if(regex.search(query) != None):
-        print("Hello")
+        # print("Hello")
         err = "Please enter a valid product name"
         return render_template('index.html', err = err)
    
