@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Page</title>
+    <style>
+        html {
+            background-color: black;
+        }
+
+        .search-box {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-box input[type="text"] {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 500px;
+            height: 30px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 10px;
+            background-color: rgba(16,163,127);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .search-box button:hover {
+            background-color: rgb(6, 104, 80);
+        }
+
+        .search-filters{
+            display: flex;
+            align-items: center;
+            margin-top: 20px;   
+            justify-content: space-between;
+            margin-right: auto;
+            margin-left: 50px;
+        }
+        .search-filters1 {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: 220px;
+            justify-content: space-between;
+            margin-right: 50px;
+        }
+
+        .search-filters input[type="text"],
+        .search-filters1 input[type="text"] {
+            padding: 10px;
+            margin-right: 12px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: auto;
+            height: 20px;
+            font-size: 16px;
+            outline: none;
+            width:100px
+        }
+
+        .search-filters label,
+        .search-filters1 label {
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        .search-filters select,
+        .search-filters1 select {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        .search-filters input[type="submit"],
+        .search-filters1 input[type="submit"] {
+            padding: 10px;
+            background-color: rgba(16,163,127);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        .search-filters input[type="submit"]:hover,
+        .search-filters1 input[type="submit"]:hover {
+            background-color: rgb(6, 104, 80);
+        }
+
+        .filter {
+            display: flex;
+            align-items: stretch;
+        }
+
+        html {
+            background-color: rgb(0 0 0);
+            color: aliceblue;
+        }
+
+        img {
+            height: 100px;
+            width: 100px;
+        }
+
+        /* table {
+border-collapse: collapse;
+border: 2px solid black;
+width: 100%;
+}
+
+th, td {
+padding: 10px;
+}
+
+th {
+background-color: rgba(52,53,65);
+} */
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.09em;
+            font-family: sans-serif;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+        }
+
+        th {
+            background-color: rgb(31 33 49);
+            color: rgb(112 112 112);
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgb(31 33 49);
+        }
+
+        tr:nth-child(odd) {
+            background-color: black;
+        }
+
+        td {
+            border-bottom: 1px solid #302e3e;
+        }
+
+        td:last-child {
+            border-right: 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tr:nth-child(odd) {
+                background-color: #fff;
+                border: 0;
+            }
+
+            table td {
+                display: block;
+                text-align: right;
+                padding: 10px 15px;
+            }
+
+            table td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form action="{{ url_for('search') }}" method="post" id="form2">
+        <div class="search-box">
+            <input type="text" id="product_alert1" placeholder="Search..." name="search_box">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+
+    <div class="filter">
+        <div class="search-filters">
+            <form action="{{ url_for('sorted') }}" method="post" id="form1">
+                <input type="text" placeholder="Filter by store" name="Filter-box">
+                <select id="price" name="price">
+                    <option value="none">Sort by Price</option>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+                <select id="rate" name="rate">
+                    <option value="unrated">Unrated</option>
+                    <option value="rated">Rated</option>
+                </select>
+                <input type="submit" value="Apply">
+
+            </form>
+
+        </div>
+        <div class="search-filters1">
+            <form action="{{ url_for('compare') }}" method="post" id="form3">
+                <input type="text" id="compare1" placeholder="Store1" name="store1">
+				<input type="text" id="compare2" placeholder="Store2" name="store2">
+                <input type="submit" value="Compare">
+            </form>
+        </div>
+    </div>
+
+    <table>
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Ratings</th>
+				<th>Price</th>
+				<th>Site</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for item in result %}
+			<tr>
+				<td>{{ item[1] }}</td>
+				<td>{{ item[2] }}</td>
+				<td>{{ item[3] }}</td>
+				<td>{{ item[4] }}</td>
+			</tr>
+			<!-- <tr>
+				<td colspan="20"><hr></td>
+			</tr> -->
+			{% endfor %}
+        </tbody>
+	</table>
+    <script src="../static/search-alert1.js"></script>
+	<script src="../static/search-alert2.js"></script>
+</body>
+
+</html>

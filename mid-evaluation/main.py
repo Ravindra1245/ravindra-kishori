@@ -8,7 +8,10 @@ from collections import *
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'}
 
 global lists
+global rated_lists
 global my_dict
+global rated_my_dict
+
 
 app = Flask(__name__)       #Initialze flask constructor
 
@@ -150,18 +153,25 @@ def search():
     query = request.form['search_box']
     data = {'History' : query}
     db.child(ekey).push(data)
-    result = execute_search(query)
+    result, ans = execute_search(query)
+    if ans=="rate":
+        return render_template('rated.html', result=result)
+
     return render_template('search.html', result=result)
 
 def execute_search(query):
     global lists
+    global rated_lists
     global my_dict
+    global rated_my_dict
+
     name=query
     name1 = name.replace(" ","+")
 
-    
     lists = []
+    rated_lists=[]
     my_dict = defaultdict(list)
+    rated_my_dict = defaultdict(list)
 
     rep_img=[]
     link = {}
@@ -186,67 +196,112 @@ def execute_search(query):
         links = parent_div.find_all('a', class_='sh-np__click-target')
         images = parent_div.find_all('img')
     except:
-        lists.append(['-', '-','Sorry the server not found','-','-'])
-        return lists
+        s=0
+    try:
+        rate_details = soup.find_all('h3', class_='tAxDx')
+        rate_ratings = soup.find_all('span', class_='QIrs8')
+        rate_prices = soup.find_all('span', class_='a8Pemb OFFNJ')
+        rate_sites = soup.find_all('div', class_='aULzUe IuHnof') 
+    except:
+        return rated_lists, "unrate"
+
     
- 
     def price_to_int(price_str):
         price_str = price_str.replace('₹', '').replace('.', '').replace(',','')
         price_int = int(price_str)
         return price_int
 
+    try:
+        for [info0, info1, info2, info3, info4] in zip(details, sites , prices, links, images):
+            try:
+                priceint = price_to_int(info2.b.text)
+            except:
+                priceint = 0
+            try:
+                img = str(info4['src'])
+                if(img=="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="):
+                    n=len(rep_img)
+                    random_int = random.randint(0, n-1)
+                    img = rep_img[random_int]                
+                else:
+                    rep_img.append(img)
+                site = info1.text
+                url="Hello"
+                if link[site]:
+                    url = link[site]
+                else:
+                    url = info3['href']
+            except:
+                x=0
+            my_dict[site].append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
+            lists.append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
+    except:
+        s=0
+    try:
+        for [info0, info1, info2, info3] in zip(rate_details, rate_ratings , rate_prices, rate_sites):
+            try:
+                priceint = price_to_int(info2.text)
+                site = info3.text
+            except:
+                priceint = 0
+            rated_my_dict[site].append([int(priceint/100) , info0.text, info1.text, info2.text, info3.text])
+            rated_lists.append([int(priceint/100) , info0.text, info1.text, info2.text, info3.text])
+    except:
+        s=0
 
-    for [info0, info1, info2, info3, info4] in zip(details, sites , prices, links, images):
-        try:
-            priceint = price_to_int(info2.b.text)
-        except:
-            priceint = 0
-        try:
-            img = str(info4['src'])
-            if(img=="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="):
-                n=len(rep_img)
-                random_int = random.randint(0, n-1)
-                img = rep_img[random_int]                
-            else:
-                rep_img.append(img)
-            site = info1.text
-            url="Hello"
-            if link[site]:
-                url = link[site]
-            else:
-                url = info3['href']
-        except:
-            x=0
-        my_dict[site].append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
-        lists.append([int(priceint/100) , info0.text, info1.text, info2.b.text, url, img])
-        
-    # lists.sort()
-    return lists
+    if len(lists)==0:
+        return rated_lists, "rate"
+    return lists,"unrate"
 
 @app.route('/sorted', methods=["POST"])
 def sorted():
+    
     global lists
     global my_dict
+    global rated_lists
+    global rated_my_dict
+
+    rate_type = request.form['rate']
     sorttype = request.form['price'] 
     company = request.form['Filter-box']
-
+    print(rate_type)
     print(sorttype) 
     print(company)
+
     st=[]
 
-    if company!="":
-        st=my_dict[company]
-    else:
-        st = lists
+    if rate_type == "rated" or len(lists)==0:
+        
+        if company!="":
+            st = rated_my_dict[company]
+        else:
+            st = rated_lists
 
-    if sorttype=="asc":
-        st.sort()
-    elif sorttype=="desc": 
-        st.sort(reverse=True)
-    return render_template('search.html', result=st)
+        if sorttype=="asc":
+            st.sort()
+        elif sorttype=="desc": 
+            st.sort(reverse=True)
+        return render_template('rated.html', result=st)
+
+    elif rate_type == "unrated":
+
+        if company!="":
+            st = my_dict[company]
+        else:
+            st = lists
+
+        if sorttype=="asc":
+            st.sort()
+        elif sorttype=="desc": 
+            st.sort(reverse=True)
+        return render_template('search.html', result=st)
+
+   
 
 @app.route('/compare', methods=["POST"])
 def compare():
+    if len(lists)==0:
+        return render_template('search.html') 
     global my_dict
     unsuc="Please Enter Valid Stores"
     try:
@@ -260,12 +315,20 @@ def compare():
     
     list1 = my_dict[store1]
     list2 = my_dict[store2]
+    if len(list1)==0 or len(list2)==0:
+        return render_template('search.html', us = "No Such Comparision Possible") 
+
     list1.sort()
     list2.sort()
     Compresult = [] 
     Compresult.append(list1[0])
     Compresult.append(list2[0])
     return render_template('search.html', result=Compresult)
+
+# @app.route('/rated', methods = ["POST"])
+# def rated():
+#     global rated_lists
+#     return render_template('rated.html', result=rated_lists)
 
 
 
