@@ -6,7 +6,7 @@
 </head>
 <body>
     {% if us %}
-			<div class="alert alert-danger">
+			<div class="alert alert-danger" style="display: flex; justify-content: center;">
 				<h2>{{us}}</h2>
 			</div>
 		{% endif %}
@@ -24,7 +24,7 @@
     <!-- Login Form -->
     <form action="http://127.0.0.1:5000/result" method="POST">
       <input type="email" id="login" class="fadeIn second" name="email" placeholder="email">
-      <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
+      <input type="password" required id="password" class="fadeIn third" name="pass" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
       <a href="http://127.0.0.1:5000/forgot_password"><u>Forgot Password?</u></a>
     </form>
