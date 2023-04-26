@@ -318,10 +318,6 @@ table {
         display: none;
     }
   
-    table tr:nth-child(odd) {
-        background-color: #fff;
-        border: 0;
-    }
   
     table td {
         display: block;
