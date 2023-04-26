@@ -18,31 +18,42 @@
 
     <!-- Login Form -->
     <form action="http://127.0.0.1:5000/register" method="POST">
-      <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
-      <input type="email" id="login" class="fadeIn second" name="email" placeholder="email">
+      <input type="text" id="name" class="fadeIn second" required name="name" placeholder="name" onkeydown="return /[a-z]/i.test(event.key)">
+      <input type="email" id="login" class="fadeIn second" required name="email" placeholder="email">
       <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8" onkeydown="test_str()">
+      <br>
+      <span style="display: none;" id="valid">valid</span>
       <!-- <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8"> -->
-      <input type="submit" class="fadeIn fourth" value="Sign Up">
+      <input type="submit" class="fadeIn fourth" value="Sign Up" id="submit">
     </form>
 
   </div>
 </div>
 </body>
 <script type="text/javascript">
+
+  // function check_username(){
+  //   var name = document.getElementById("name").value
+  //   if(name.match())
+  // }
+
   function test_str() {
       // var res=document.getElementById("re").value;
       console.log("chalu")
       var str = document.getElementById("password").value;
+      var valid = document.getElementById("valid")
       // if (str.match(/[a-z]/g) && str.match(
       //         /[A-Z]/g) && str.match(
       //         /[0-9]/g) && str.match(
       //         /[^a-zA-Z\d]/g) && str.length >= 8)
+      if(valid.style.display === "none"){
+        valid.style.display = "block";
+      }
       if((str.match(/[A-Z]/)) && str.length >=8 && str.length <=15 && str.match(/[a-z]/) && str.match(/[0-9]/)){
-        console.log("true")
+        valid.innerHTML = "Valid"
       }
       else
-      console.log("False")
-
+      valid.innerHTML = "Invalid";
   }
 </script>
 </html>
