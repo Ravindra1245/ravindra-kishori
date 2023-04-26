@@ -2,14 +2,19 @@
 <html>
 <head>
 	<title>Two Inline Buttons with Logo</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'temp.css') }}">
+	<link rel="stylesheet" type="text/css" href="../static/temp.css">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@900;800;700;400&family=Sacramento&family=Ubuntu&display=swap"
+        rel="stylesheet">
 
 </head>
 <body>
 	<div class="container">
-		<div class="logo">
-			<img src="static/logo3.png" alt="Logo">
+		<div class="container fluid welc_price">
+			<h1 class="Welcome_price">Welcome to Price<span>Compare</span></h1>
 		</div>
+	
 		<div class="buttons">
 			<a href="http://127.0.0.1:5000/login"><button class="button">Log in</button></a>
 		    <a href="http://127.0.0.1:5000/signup"><button class="button">Sign up</button></a>
