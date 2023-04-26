@@ -19,8 +19,8 @@
     <!-- Login Form -->
     <form action="http://127.0.0.1:5000/register" method="POST">
       <input type="text" id="name" class="fadeIn second" required name="name" placeholder="name" onkeydown="return /[a-z]/i.test(event.key)">
-      <input type="email" id="login" class="fadeIn second" required name="email" placeholder="email">
-      <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8" onkeydown="test_str()">
+      <input type="email" id="login" class="fadeIn second" required name="email" placeholder="email" maxlength="100" minlength="7" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com">
+      <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8">
       <br>
       <span style="display: none;" id="valid"></span>
       <!-- <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8"> -->
@@ -30,7 +30,7 @@
   </div>
 </div>
 </body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
   // function check_username(){
   //   var name = document.getElementById("name").value
@@ -39,7 +39,7 @@
 
   function test_str() {
       // var res=document.getElementById("re").value;
-      console.log("chalu")
+      // console.log("chalu")
       var str = document.getElementById("password").value;
       var valid = document.getElementById("valid")
       // if (str.match(/[a-z]/g) && str.match(
@@ -55,5 +55,5 @@
       else
       valid.innerHTML = "Invalid password";
   }
-</script>
+</script> -->
 </html>
