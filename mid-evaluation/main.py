@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import random
 from collections import *
+import re
 
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'}
 
@@ -156,13 +157,22 @@ def register():
 @app.route('/search', methods=["POST"])
 def search():
     query = request.form['search_box']
+    regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+     
+    # Pass the string in search
+    # method of regex object.   
+    if(regex.search(query) != None):
+        print("Hello")
+        err = "Please enter a valid product name"
+        return render_template('index.html', err = err)
+   
     data = {'History' : query}
     db.child(ekey).push(data)
     result, ans = execute_search(query)
     if ans=="rate":
         return render_template('rated.html', result=result)
-
     return render_template('search.html', result=result)
+
 
 def execute_search(query):
     global lists
@@ -277,29 +287,38 @@ def sorted():
 
     if rate_type == "rated" or len(lists)==0:
         
-        if company!="":
-            st = rated_my_dict[company]
-        else:
-            st = rated_lists
+        if company in rated_my_dict:
+            if company!="":
+                st = rated_my_dict[company]
+            else:
+                st = rated_lists
 
-        if sorttype=="asc":
-            st.sort()
-        elif sorttype=="desc": 
-            st.sort(reverse=True)
-        return render_template('rated.html', result=st)
+            if sorttype=="asc":
+                st.sort()
+            elif sorttype=="desc": 
+                st.sort(reverse=True)
+            return render_template('rated.html', result=st)
+        else:
+            return render_template('search.html', us="Please enter valid Store")
+
 
     elif rate_type == "unrated":
 
-        if company!="":
-            st = my_dict[company]
-        else:
-            st = lists
+        if company in my_dict:
+            if company!="":
+                st = my_dict[company]
+            else:
+                st = lists
 
-        if sorttype=="asc":
-            st.sort()
-        elif sorttype=="desc": 
-            st.sort(reverse=True)
-        return render_template('search.html', result=st)
+            if sorttype=="asc":
+                st.sort()
+            elif sorttype=="desc": 
+                st.sort(reverse=True)
+            return render_template('search.html', result=st)
+        else:
+            return render_template('search.html', us="Please enter valid Store")
+
+
 
    
 

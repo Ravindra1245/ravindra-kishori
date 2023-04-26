@@ -74,6 +74,11 @@
         <div class="form-center">
             <input type="text" id="product_alert" placeholder="Enter the product..." name = "search_box">
             <button type="submit" class="searchbut" >Search</button>
+            {% if err %}
+                    <h1 style="color: white;">
+                        {{ err }}
+                    </h1>
+                {% endif %}
         </div>
     </form>
    
