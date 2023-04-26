@@ -2,59 +2,49 @@
 <html>
 
 <head>
-	<title>Search Results</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'search.css') }}">
+    <title>Search Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'search.css') }}">
 </head>
 
 <body>
-	{% if us %}
-			<div>
-				<h2>{{us}}</h2>
-			</div>
-	{% endif %}
-	<header>
-		<nav>
-			<div class="filter-menu">
-				<form action="{{ url_for('sorted') }}" method="post" id="form1">
-					<fieldset>
-						<div class="search-box1">
-							
-							<input type="text" id="search" placeholder="Filter by store" name="Filter-box">
-							<br>
-							<br>
-							<select id="price" name="price">
-								<option value="none">Sort by Price</option>
-								<option value="asc">Ascending</option>
-								<option value="desc">Descending</option>
-							</select>
-							<br>
-							<button type="submit">Apply<i class="fa fa-search"></i></button>
-							
-						</div>
-						
-						<!-- <button type="submit" class="search-box">Apply<i class="fa fa-search"></i></button> -->
-					</fieldset>
-				</form>
-			</div>
-			<div class="search-box">
-				<form action="{{ url_for('search') }}" method="post" id="form2">
-					<input type="text" id="product_alert1" placeholder="Search..." name="search_box">
-					<button type="submit">Search<i class="fa fa-search"></i></button>
-				</form>
-			</div>
-			<div class="search-box2">
-				<form action="{{ url_for('compare') }}" method="post" id="form3">
-					<input type="text" id="compare1" placeholder="store1" name="store1">
-					<input type="text" id="compare2" placeholder="store2" name="store2">
-					<button type="submit">Compare<i class="fa fa-search"></i></button>
-				</form>
-			</div>
-		</nav>
-	</header>
-	<table>
+    <form action="{{ url_for('search') }}" method="post" id="form2">
+        <div class="search-box">
+            <input type="text" id="product_alert1" placeholder="Search..." name="search_box">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+
+    <div class="filter">
+        <div class="search-filters">
+            <form action="{{ url_for('sorted') }}" method="post" id="form1">
+                <input type="text" placeholder="Filter by store" name="Filter-box">
+                <select id="price" name="price">
+                    <option value="none">Sort by Price</option>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+                <select id="rate" name="rate">
+                    <option value="unrated">Unrated</option>
+                    <option value="rated">Rated</option>
+                </select>
+                <input type="submit" value="Apply">
+
+            </form>
+
+        </div>
+        <div class="search-filters1">
+            <form action="{{ url_for('compare') }}" method="post" id="form3">
+                <input type="text" id="compare1" placeholder="Store1" name="store1">
+				<input type="text" id="compare2" placeholder="Store2" name="store2">
+                <input type="submit" value="Compare">
+            </form>
+        </div>
+    </div>
+
+    <table>
 		<thead>
 			<tr>
-				<th>Details</th>
+				<th>Product</th>
 				<th>Site</th>
 				<th>Price</th>
 				<th>Link</th>
@@ -62,7 +52,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for item in result %}
+            {% for item in result %}
 			<tr>
 				<td>{{ item[1] }}</td>
 				<td>{{ item[2] }}</td>
@@ -75,21 +65,9 @@
 				<td colspan="20"><hr></td>
 			</tr> -->
 			{% endfor %}
-		</tbody>
+        </tbody>
 	</table>
-	<!-- <script>
-		const form = document.querySelector('form');
-		const input = document.querySelector('input');
-		const resultsDiv = document.querySelector('#search-results');
-
-		form.addEventListener('submit', (event) => {
-			event.preventDefault();
-			const query = input.value;
-			// Perform search and update search results in the "resultsDiv"
-			resultsDiv.innerHTML = `Search results for '${query}'`;
-		});
-	</script> -->
-	<script src="../static/search-alert1.js"></script>
+    <script src="../static/search-alert1.js"></script>
 	<script src="../static/search-alert2.js"></script>
 </body>
 
