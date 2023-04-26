@@ -49,11 +49,26 @@
             <a style="text-decoration: none;" href="http://127.0.0.1:5000/no_search_history"
                 class="btn tmpp btn-lg active">Clear history</a>
         </div>
-        <ul style="text-align: center;">
+        <!-- <ul style="text-align: center;">
             {% for history_name in history_names %}
             <li>{{ history_name }}</li>
             {% endfor %}
-        </ul>
+        </ul> -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>History</th>                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for history_name in history_names %}
+                <tr>
+                    <td align="center">{{history_name}}</td>                    
+                </tr>               
+                {% endfor %}
+            </tbody>
+        </table>
 
         <footer class="footer-distributed" id="ttt">
 
