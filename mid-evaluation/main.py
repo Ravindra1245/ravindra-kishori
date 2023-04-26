@@ -74,6 +74,11 @@ def search_history():
             history_names.append(i['History'])
         return render_template("search_history.html" , history_names=history_names)
 
+@app.route("/no_search_history" , methods=['GET'])
+def no_search_history():
+    db.child(ekey).remove()
+    return render_template("no_search_history.html")
+
 #forgot password 
 @app.route("/forgot_password" , methods=["POST", "GET"])
 def forgot_password():
