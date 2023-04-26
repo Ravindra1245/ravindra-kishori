@@ -287,7 +287,7 @@ def sorted():
 
     if rate_type == "rated" or len(lists)==0:
         
-        if company in rated_my_dict:
+        if company == "" or company in rated_my_dict:
             if company!="":
                 st = rated_my_dict[company]
             else:
@@ -304,7 +304,7 @@ def sorted():
 
     elif rate_type == "unrated":
 
-        if company in my_dict:
+        if company == "" or company in my_dict:
             if company!="":
                 st = my_dict[company]
             else:
@@ -339,7 +339,7 @@ def compare():
     
     list1 = my_dict[store1]
     list2 = my_dict[store2]
-    if len(list1)==0 or len(list2)==0:
+    if len(list1)==0 or len(list2)==0 or store1 == store2:
         return render_template('search.html', us = "No Such Comparision Possible") 
 
     list1.sort()
