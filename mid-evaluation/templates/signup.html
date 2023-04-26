@@ -22,7 +22,7 @@
       <input type="email" id="login" class="fadeIn second" required name="email" placeholder="email">
       <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8" onkeydown="test_str()">
       <br>
-      <span style="display: none;" id="valid">valid</span>
+      <span style="display: none;" id="valid"></span>
       <!-- <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8"> -->
       <input type="submit" class="fadeIn fourth" value="Sign Up" id="submit">
     </form>
@@ -50,10 +50,10 @@
         valid.style.display = "block";
       }
       if((str.match(/[A-Z]/)) && str.length >=8 && str.length <=15 && str.match(/[a-z]/) && str.match(/[0-9]/)){
-        valid.innerHTML = "Valid"
+        valid.innerHTML = "Valid password"
       }
       else
-      valid.innerHTML = "Invalid";
+      valid.innerHTML = "Invalid password";
   }
 </script>
 </html>
