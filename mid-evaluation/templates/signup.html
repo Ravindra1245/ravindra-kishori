@@ -21,9 +21,9 @@
     <form action="{{ url_for('register')}}" method="POST">
       <input type="text" id="name" class="fadeIn second" required name="name" placeholder="name" onkeydown="return /[a-z]/i.test(event.key)">
       <input type="email" id="login" class="fadeIn second" required name="email" placeholder="email" maxlength="100" minlength="7" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com">
-      <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8">
+      <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8" onkeydown=test_str()>
       <br>
-      <span style="display: none;" id="valid"></span>
+      <span style="display: none; font-size: smaller;" id="valid"></span>
       <!-- <input type="password" id="password" class="fadeIn third" required name="pass" placeholder="password" maxlength="15" minlength="8"> -->
       <input type="submit" class="fadeIn fourth" value="Sign Up" id="submit">
     </form>
@@ -31,7 +31,7 @@
   </div>
 </div>
 </body>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 
   // function check_username(){
   //   var name = document.getElementById("name").value
@@ -56,5 +56,5 @@
       else
       valid.innerHTML = "Invalid password";
   }
-</script> -->
+</script>
 </html>
