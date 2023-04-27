@@ -86,19 +86,19 @@ span {
 .search-filters {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  /* margin-top: 20px;
   justify-content: space-between;
   margin-right: auto;
-  margin-left: 50px;
+  margin-left: 50px; */
 }
 
 .search-filters1 {
   display: flex;
-  align-items: center;
+  /* align-items: center;
   margin-top: 20px;
   margin-left: 220px;
   justify-content: space-between;
-  margin-right: 50px;
+  margin-right: 50px; */
 }
 
 .search-filters input[type="text"],
@@ -168,7 +168,9 @@ span {
   /* align-content: center; */
   background-color: black;
   display: flex;
-  align-items: stretch;
+  /* align-items: stretch; */
+  /* flex-direction: column; */
+  justify-content: space-between;
 }
 
 #rate {
@@ -180,7 +182,7 @@ span {
 #compare1 {
   width: auto;
   padding: 20px;
-  margin: 5px 10px;
+  /* margin: 5px 10px; */
 }
 
 #compare2 {
@@ -188,7 +190,7 @@ span {
   padding: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-right: 10px;
 }
 
@@ -251,6 +253,15 @@ td:last-child {
 }
 
 @media screen and (max-width: 600px) {
+  /* .search-filters{
+    display: flex;
+    flex-direction: column;
+  } */
+
+  .filter{
+    flex-direction: column;
+  }
+
   table {
     border: 0;
   }
@@ -268,7 +279,7 @@ td:last-child {
   table td {
     color: white;
     display: block;
-    text-align: right;
+    text-align: center;
     padding: 10px 15px;
   }
 
@@ -450,6 +461,10 @@ td:last-child {
 @media (max-width: 880px) {
   * {
       font-family: Open Sans;
+  }
+
+  .filter{
+    flex-direction: column;
   }
 
   .footer-distributed {
