@@ -54,11 +54,11 @@
                             </a>
                             <ul class="dropdown-menu tmpp" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item hovc" href="#">Profile</a></li>
-                                <li><a class="dropdown-item hovc" href="http://127.0.0.1:5000/search_history">Search History</a></li>
+                                <li><a class="dropdown-item hovc" href="{{ url_for('search_history')}}">Search History</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item hovc" href="login">Log out</a></li>
+                                <li><a class="dropdown-item hovc" href="{{ url_for('login')}}">Log out</a></li>
                             </ul>
                         </li>
 

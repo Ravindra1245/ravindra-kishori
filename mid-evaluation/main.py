@@ -85,8 +85,11 @@ def no_search_history():
 def forgot_password():
     if request.method == "POST":
         email = request.form['email']
-        auth.send_password_reset_email(email)
-        return render_template('login.html')
+        try:
+            auth.send_password_reset_email(email)
+            return render_template('login.html')
+        except:
+            return render_template('forgot_password.html', us="Entered mail is not registered")
     return render_template('forgot_password.html')
     
 @app.route("/price")
