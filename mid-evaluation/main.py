@@ -149,7 +149,7 @@ def register():
                 return redirect(url_for('welcome'))
             except:
                 #If there is any error, redirect to register
-                return redirect(url_for('register'))
+                return render_template('signup.html', us="Id Already Exists!")
 
         else:
             if person["is_logged_in"] == True:
@@ -157,7 +157,7 @@ def register():
             else:
                 return redirect(url_for('register'))
     except:
-        render_template('signup.html', us="User exists")
+        return render_template('signup.html', us="User exists")
     
 
 

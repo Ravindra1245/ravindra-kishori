@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  
 <div class="wrapper fadeInDown">
+  {% if us %}
+    <h2 style="text-align: center; font-family: sans-serif;">{{us}}</h2>
+  {% endif %}
   <div id="formContent">
     <!-- Tabs Titles -->
     <a href="{{ url_for('login')}}"><h2 class="inactive underlineHover"> Log In </h2></a>
