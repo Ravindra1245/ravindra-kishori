@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amazon and Flipkart Products</title>
+  </head>
+  <body>
+    
+
+    <h1>Flipkart Products</h1>
+    {% if flipkart_products %}
+    <ul>
+      {% for key, value in flipkart_products.items() %}
+      <li>
+        {{ value.product_name }} - {{ value.product_price }}
+        <br>
+        <img src="{{ value.product_image_url }}" alt="{{ value.product_name }}">
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No Flipkart products found.</p>
+    {% endif %}
+  </body>
+</html>

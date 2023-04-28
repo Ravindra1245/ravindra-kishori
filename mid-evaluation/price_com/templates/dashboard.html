@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+</head>
+<body>
+	{% if email and password %}
+		<p>Email: {{ email }}</p>
+		<p>Password: {{ password }}</p>
+		<p><a href="/logout">Logout</a></p>
+        <p>Search for a product? <a href="/index">Search</a></p>
+	{% else %}
+		<p>You need to login to see this page. <a href="/login">Click here</a></p>
+        <p><a href="/logout">Logout</a></p>
+        <p>Search for a product? <a href="/index">Search</a></p>
+
+	{% endif %}
+</body>
+</html>
