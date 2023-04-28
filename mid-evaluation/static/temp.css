@@ -29,6 +29,8 @@ body {
 
 .buttons {
 	display: flex;
+	width: 100%;
+	justify-content: center;
 }
 
 .button {
@@ -54,7 +56,7 @@ a {
 .welc_price{
 	font-family: 'Ubuntu', sans-serif;
     font-size: xx-large;
-    
+    width: 100%;
     margin-top: 2vw;
     margin-bottom: 2vw;
     text-align: center;
@@ -62,4 +64,14 @@ a {
 
 .welc_price span {
     color: rgba(16, 163, 127);
+}
+
+@media (max-width: 880px){
+	.welc_price{
+		font-size: 70px;
+	}
+	.button{
+		padding: 30px 60px;
+		font-size: 25px;
+	}
 }

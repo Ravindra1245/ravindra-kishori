@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Two Inline Buttons with Logo</title>
+	<title>Price Comparison Website</title>
 	<link rel="stylesheet" type="text/css" href="../static/temp.css">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<link
@@ -13,11 +13,11 @@
 	<div class="container">
 		<div class="container fluid welc_price">
 			<h1 class="Welcome_price">Welcome to Price<span>Compare</span></h1>
-		</div>
-	
-		<div class="buttons">
-			<a href="{{ url_for('login')}}"><button class="button">Log in</button></a>
-		    <a href="{{ url_for('signup')}}"><button class="button">Sign up</button></a>
+			
+			<div class="buttons">
+				<a href="{{ url_for('login')}}"><button class="button">Log in</button></a>
+				<a href="{{ url_for('signup')}}"><button class="button">Sign up</button></a>
+			</div>
 		</div>
 	</div>
 </body>
