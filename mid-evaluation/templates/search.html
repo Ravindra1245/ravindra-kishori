@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="../static/search.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'search.css') }}">
 </head>
 
 <body>
@@ -157,8 +157,8 @@
 
         </footer>
 
-        <script src="../static/search-alert1.js"></script>
-        <script src="../static/search-alert2.js"></script>
+        <script src="{{ url_for('static', filename = 'search-alert1.js') }}"></script>
+        <script src="{{ url_for('static', filename = 'search-alert2.js') }}"></script>
     </div>
 </body>
 

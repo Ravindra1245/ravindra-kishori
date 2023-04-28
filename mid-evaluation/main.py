@@ -124,37 +124,41 @@ def result():
 #If someone clicks on register, they are redirected to /register
 @app.route("/register", methods = ["POST"])
 def register():
-    if request.method == "POST":        #Only listen to POST
-        result = request.form           #Get the data submitted
-        email = result["email"]
-        password = result["pass"]
-        name = result["name"]
-        ekey = email[:email.index("@")]
-        try:
-            #Try creating the user account using the provided data
-            auth.create_user_with_email_and_password(email, password)
-            #Login the user
-            user = auth.sign_in_with_email_and_password(email, password)
-            #Add data to global person
-            global person
-            person["is_logged_in"] = True
-            person["email"] = user["email"]
-            person["uid"] = user["localId"]
-            person["name"] = name
-            #Append data to the firebase realtime database
-            data = {"name": name, "email": email}
-            db.child("users").child(person["uid"]).set(data)
-            #Go to welcome page
-            return redirect(url_for('welcome'))
-        except:
-            #If there is any error, redirect to register
-            return redirect(url_for('register'))
+    try:
+        if request.method == "POST":        #Only listen to POST
+            result = request.form           #Get the data submitted
+            email = result["email"]
+            password = result["pass"]
+            name = result["name"]
+            ekey = email[:email.index("@")]
+            try:
+                #Try creating the user account using the provided data
+                auth.create_user_with_email_and_password(email, password)
+                #Login the user
+                user = auth.sign_in_with_email_and_password(email, password)
+                #Add data to global person
+                global person
+                person["is_logged_in"] = True
+                person["email"] = user["email"]
+                person["uid"] = user["localId"]
+                person["name"] = name
+                #Append data to the firebase realtime database
+                data = {"name": name, "email": email}
+                db.child("users").child(person["uid"]).set(data)
+                #Go to welcome page
+                return redirect(url_for('welcome'))
+            except:
+                #If there is any error, redirect to register
+                return redirect(url_for('register'))
 
-    else:
-        if person["is_logged_in"] == True:
-            return redirect(url_for('welcome'))
         else:
-            return redirect(url_for('register'))
+            if person["is_logged_in"] == True:
+                return redirect(url_for('welcome'))
+            else:
+                return redirect(url_for('register'))
+    except:
+        render_template('signup.html', us="User exists")
+    
 
 
 @app.route('/search', methods=["POST"])
@@ -360,7 +364,7 @@ def compare():
 
 
 if __name__ == "__main__":
-    app.run()   
+    app.run(threaded=True)   
 
 
     

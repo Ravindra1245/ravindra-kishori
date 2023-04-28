@@ -23,3 +23,8 @@ body{
 	color: #404040;
 	font-family: monospace;
 }
+
+.button{
+	align-items: center;
+	background-color: rgba(16,163,127);
+}

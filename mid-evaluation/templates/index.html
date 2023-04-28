@@ -94,14 +94,14 @@
             <div class="carousel-item active">
     
               <h2>Saved time and money thanks to this platform, Thanks to PriceCompare. Highly Recommend!!</h2>
-              <img class="testimonial-image" src="../static/Images/girl.jpg" alt="dog-profile">
+              <img class="testimonial-image" src="{{ url_for('static', filename = 'girl.jpg') }}" alt="dog-profile">
               <em class="person">Sofia, Paris</em>
     
             </div>
             <div class="carousel-item">
     
               <h2>Skeptical at first, but PriceCompare exceeded expectations. Saved money on exact same product.</h2>
-              <img class="testimonial-image" src="../static/Images/boy.jpg" alt="lady-profile">
+              <img class="testimonial-image" src="{{ url_for('static', filename = 'boy.jpg') }}" alt="lady-profile">
               <em class = "person">Mike, London</em>
             </div>
           </div>
@@ -190,7 +190,7 @@
 
     </footer>
     </div>
-    <script src="../static/index-alert.js">
+    <script src="{{ url_for('static', filename = 'index-alert.js') }}">
         
 
     </script>
