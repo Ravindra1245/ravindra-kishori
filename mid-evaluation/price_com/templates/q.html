@@ -1,0 +1,94 @@
+
+
+{% block content %}
+    <h1>Welcome, {{ email }}!</h1>
+    <h2>Search for a product:</h2>
+    <form action="{{ url_for('search') }}" method="GET">
+        <input type="text" name="q" value="{{ request.args.get('q', '') }}">
+        <input type="submit" value="Search">
+    </form>
+
+
+    {% if amazon_results %}
+      <h2>Amazon Results:</h2>
+     <ul>
+     {% for result in amazon_results %}
+        <li>
+            <img src="{{ result['image_url'] }}" alt="{{ result['name'] }}" width="100">
+            <h3>{{ result['name'] }}</h3>
+            <p>{{ result['model'] }}</p>
+            <p>Price: {{ result['price'] }}</p>
+        </li>
+     {% endfor %}
+     </ul>
+    {% endif %}
+
+    {% if flipkart_results %}
+     <h2>Flipkart Results:</h2>
+     <ul>
+     {% for result in flipkart_results %}
+        <li>
+            <img src="{{ result['image_url'] }}" alt="{{ result['name'] }}" width="100">
+            <h3>{{ result['name'] }}</h3>
+            <p>{{ result['model'] }}</p>
+            <p>Price: {{ result['price'] }}</p>
+        </li>
+     {% endfor %}
+     </ul>
+   {% endif %}
+   
+{% endblock %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ search_term }}"</h1>
+    <form action="{{ url_for('search') }}" method="post">
+        <input type="text" name="search" placeholder="Search Products">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Amazon Results:</h2>
+    {% if amazon_results %}
+        <ul>
+            {% for result in amazon_results %}
+                <li>
+                    <img src="{{ result.image_url }}" alt="{{ result.name }}" width="100">
+                    <p>{{ result.name }}</p>
+                    <p>{{ result.model }}</p>
+                    <p>{{ result.price }}</p>
+                    <p>{{ result.source }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Amazon Results found.</p>
+    {% endif %}
+
+    <h2>Flipkart Results:</h2>
+    {% if flipkart_results %}
+        <ul>
+            {% for result in flipkart_results %}
+                <li>
+                    <img src="{{ result.image_url }}" alt="{{ result.name }}" width="100">
+                    <p>{{ result.name }}</p>
+                    <p>{{ result.model }}</p>
+                    <p>{{ result.price }}</p>
+                    <p>{{ result.source }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Flipkart Results found.</p>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
