@@ -1,0 +1,165 @@
+<head>
+    <title>Search Page</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--icon-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="../static/search.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand brand compare" href="{{ url_for('index')}}"
+                    id="bigi">Price<span>Compare</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                    aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link hov" aria-current="page" href="#ttt">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hov" href="mailto:pricecomparemangaer@gmail.com">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main">
+        <form action="{{ url_for('search') }}" method="post" id="form2">
+            <div class="search-box">
+                <input type="text" id="product_alert1" placeholder="Search..." name="search_box">
+                <button id="searchbutt" type="submit">Search</button>
+            </div>
+        </form>
+
+        <div class="filter">
+            <div class="search-filters">
+                <form action="{{ url_for('sorted') }}" method="post" id="form1">
+                    <input class="filterin" type="text" placeholder="Filter by store" name="Filter-box">
+                    <select id="price" name="price">
+                        <option value="none">Sort by Price</option>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                    <select id="rate" name="rate">
+                        <option value="unrated">Unrated</option>
+                        <option value="rated">Rated</option>
+                    </select>
+                    <input type="submit" value="Apply">
+                </form>
+            </div>
+            <div class="search-filters1">
+                <form action="{{ url_for('compare') }}" method="post" id="form3">
+                    <input type="text" id="compare1" placeholder="Store1" name="store1">
+                    <input type="text" id="compare2" placeholder="Store2" name="store2">
+                    <input id= "compbutt" type="submit" value="Compare">
+                </form>
+            </div>
+        </div>
+        
+        
+    {% if us %}
+    <h2 style="text-align: center; font-family: sans-serif;">{{us}}</h2>
+    {% endif %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Site</th>
+                    <th>Price</th>
+                    <th>Link</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in result %}
+                <tr>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>{{ item[3] }}</td>
+                    <td><a href="{{item[4]}}"><button class="store" id="visi">Visit</button></a></td>
+                    <!-- <td>{{item[5]}}</td> -->
+                    <td><img src="{{ item[5] }}" alt="Cannot load"></td>
+                </tr>
+                <!-- <tr>
+				<td colspan="20"><hr></td>
+			</tr> -->
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <footer class="footer-distributed" id="ttt">
+
+            <div class="footer-left">
+
+                <h3>Price<span>Compare</span></h3>
+
+                <p class="footer-company-name" style="padding-top: 40px;">© Copyright PriceCompare, 2023</p>
+            </div>
+
+            <div class="footer-center">
+
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>DA-IICT</span> Gandhinagar, India</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+91.123.456.7891</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p class="maili"><a href="mailto:pricecomparemanger@gmail.com">pricecomparemanger@gmail.com</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="footer-right">
+
+                <p class="footer-company-about">
+                    <span>About the PriceCompare</span>
+                    This software is developed by G28 in the software engineering course. It can compare the product
+                    from
+                    the
+                    different E-commerce stores.
+                </p>
+
+                <div class="footer-icons">
+
+                    <a href="#"><i class="foot-icon fab fa-twitter"></i></a>
+                    <a href="#"><i class="foot-icon fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="foot-icon fab fa-linkedin"></i></a>
+                    <a href="mailto:pricecomparemangaer@gmail.com"><i class="foot-icon fas fa-envelope"></i></a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+        <script src="../static/search-alert1.js"></script>
+        <script src="../static/search-alert2.js"></script>
+    </div>
+</body>
+
+</html>

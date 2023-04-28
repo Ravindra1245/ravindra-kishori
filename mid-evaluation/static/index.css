@@ -1,18 +1,112 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
 body {
+    background-color: rgb(3, 3, 3);
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
+.main{
+    margin-top: 100px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+.searchbut:hover{
+    background-color: rgb(18, 78, 63);
+}
+.form-center {
+    margin: 4% 0% 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    /* optional: add a maximum width to the form container */
+}
+.navbar {
+   
+    background-color:rgb(0, 0, 0 , 1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+.pro{
+    position: relative;
+    z-index: 999;
+}
+
+.tmpp{
+    
+    padding: 8px;;
+    background-color: rgba(16, 163, 127);
+    border-color: #222;
+}
+.hovc{
+    color: black;
+   
+}
+.hovc:hover{
+    border-radius: 5%;
+    color: #fff;
+    background-color: rgb(9, 9, 9);
+}
+input[type="text"],
+button[type="submit"] {
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 70%;
+    /* update the width of the search bar to 100% */
+}
+
+input[type="text"] {
+    padding: 15px;
+}
+
+button[type="submit"] {
+    background-color: rgba(16, 163, 127);
+    padding: 10px;
+    color: white;
+    width: 20%;
+}
+
+.welc_price{
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-top: 15vw;
+    margin-bottom: 2vw;
+    text-align: center;
+}
+.compare span{
+    color: rgba(16, 163, 127);
+}
+.welc_price span {
+    color: rgba(16, 163, 127);
+}
+.Welcome_price{
+    color: #fff;
+    font-size: 1000;
+    font-weight: bolder;
+    margin-top: 4vw;
+    margin-bottom: 2vw;
+    text-align: center;
+}
 
 /* Styles for the header */
-header {
+/* header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color:rgb(29 29 29);
-    color: white;
-}
+    background-color: rgb(29 29 29);
+    color: rgb(255, 255, 255);
+} */
 
 /* Styles for the search bar container */
 .search-container {
@@ -20,13 +114,15 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 50px); /* adjust this value to position the search bar at the desired height */
-    background-color: rgba(52,53,65);
+    height: calc(100vh - 50px);
+    /* adjust this value to position the search bar at the desired height */
+    background-color: rgba(52, 53, 65);
 }
 
 /* Styles for the search bar */
 #search {
-    width: 60%;
+    margin: 2% 10%;
+    width: 70%;
     padding: 15px;
     border: none;
     border-radius: 5px;
@@ -37,7 +133,7 @@ header {
 
 /* Styles for the search button */
 #search-button {
-    background-color: rgba(16,163,127);
+    background-color: rgba(16, 163, 127);
     color: white;
     padding: 15px;
     border: none;
@@ -46,11 +142,288 @@ header {
     cursor: pointer;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
-button:hover {
-    color: rgb(6, 104, 80);
+
+.form-width {
+    justify-content: center;
+    width: 100%;
 }
+
+
+.search_button {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.dropdown-menu {
+    text-align: center;
+}
+
+.brand {
+    font-size: 4vh;
+}
+
+
+section {
+    width: 100%;
+    display: inline-block;
+    background: #333;
+    height: 50vh;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* carousal */
+
+
+#testimonials{
+
+    text-align: center;
+    background-color: rgba(16, 163, 127);
+    color: #fff;
+    }
+    
+    .testimonial-image{
+      width: 10%;
+      border-radius: 100%;
+      margin: 20px;
+    }
+    
+    .person{
+        font-weight: 400;
+        font-size: 1em;
+    }
+    .carousel-item{
+        padding-top: 5%;
+        padding-left:  20%;
+        padding-right: 20%;
+      }
+  /* oneline */
+
+#cta {
+    background-color: rgb(3, 3, 3);
+    color: #fff;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+/* .onlyline{
+    margin-top: 160px;
+    margin-bottom: 200px;
+} */
+
+.big-heading {
+    font-family:Open Sans;
+    padding-top: 150px;
+    padding-bottom: 200px;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 1;
+}
+
+.hov:hover {
+    color: rgba(16, 163, 127);
+  }
+
+
+/* footer */
+.footer-distributed {
+    background: #2f2f2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+    width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3 {
+    color: #ffffff;
+    font: normal 36px 'Open Sans', cursive;
+    margin: 0;
+}
+
+.footer-distributed h3 span {
+    color:  rgba(16, 163, 127);
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+    padding: 0;
+}
+
+.footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    font-weight: 400;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 60px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+    width: 35%;
+}
+
+.footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 400;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+    color:  rgba(16, 163, 127);
+    text-decoration: none;
+    ;
+}
+
+.footer-distributed .footer-links a:before {
+    content: "|";
+    font-weight: 300;
+    font-size: 20px;
+    left: 0;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+    content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+    width: 20%;
+}
+
+.footer-distributed .footer-company-about {
+    line-height: 20px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+    margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+    * {
+        font-family: Open Sans;
+    }
+
+    .footer-distributed {
+        font: bold 14px sans-serif;
+    }
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .footer-distributed .footer-center i {
+        margin-left: 0;
+    }
+
+}
+
+
+/* button:hover {
+    color: rgb(6, 104, 80);
+} */
+
 /* Styles for the logout button */
-#logout {
+/* #logout {
     background-color: white;
     color: #333;
     margin: 20px;
@@ -63,9 +436,49 @@ button:hover {
     top: 10px;
     right: 10px;
 }
-#logout:hover{
+
+#logout:hover {
     background-color: #e3e3e3;
-}
-a {
+} */
+
+/* a {
     text-decoration: none;
 }
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    display: block;
+    padding: 10px;
+    color: #e70606;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: rgb(29, 29, 29);
+    color: #d40b22;
+} */
+
+
+/* #logout {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-left: auto;
+}
+
+#logout:hover {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+} */
